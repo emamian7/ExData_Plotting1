@@ -1,5 +1,5 @@
 dataFile <- "household_power_consumption.txt"
-data <- read.table(dataFile, header=TRUE, sep=";", stringsAsFactors=FALSE, dec=".")
+data <- read.table(dataFile, header=TRUE, sep=";")
 subSetData <- data[data$Date %in% c("1/2/2007","2/2/2007") ,]
 colnames(DataFile) <- c('Date', 'Time', 'GlobalActivePower', 'GlobalReactivePower', 'Voltage',
 'GlobalIntensity', 'SubMetering1', 'SubMetering2', 'SubMetering3')
@@ -7,10 +7,9 @@ colnames(DataFile) <- c('Date', 'Time', 'GlobalActivePower', 'GlobalReactivePowe
 datetime <- strptime(paste(subSetData$Date, subSetData$Time, sep=" "), "%d/%m/%Y %H:%M:%S") 
 
 ####Plot 1
-dataFile <- "household_power_consumption.txt"
-data <- read.table(dataFile, header=TRUE, sep=";", stringsAsFactors=FALSE, dec=".")
-subSetData <- data[data$Date %in% c("1/2/2007","2/2/2007") ,]
-
+#dataFile <- "household_power_consumption.txt"
+#data <- read.table(dataFile, header=TRUE, sep=";", stringsAsFactors=FALSE, dec=".")
+#subSetData <- data[data$Date %in% c("1/2/2007","2/2/2007") ,]
 #str(subSetData)
 globalActivePower <- as.numeric(subSetData$Global_active_power)
 png("plot1.png", width=480, height=480)
@@ -31,7 +30,7 @@ png("plot3.png", width=480, height=480)
 plot(datetime, subMetering1, type="l", ylab="Energy Submetering", xlab="")
 lines(datetime, subMetering2, type="l", col="red")
 lines(datetime, subMetering3, type="l", col="blue")
-legend("topright", c("Sub_metering_1", "Sub_metering_2", "Sub_metering_3"), lty=1, lwd=2.5, col=c("black", "red", "blue"))
+legend("topright", c("Sub_metering_1", "Sub_metering_2", "Sub_metering_3"), lty=1, col=c("black", "red", "blue"))
 dev.off()        
            
   ## Plot# 4
