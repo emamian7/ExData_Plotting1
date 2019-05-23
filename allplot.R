@@ -1,7 +1,7 @@
 DATA <- "household_power_consumption.txt"
 data <- read.table(DATA, header=TRUE, sep=";")
 subSetData <- data[data$Date %in% c("1/2/2007","2/2/2007") ,]
-colnames(DataFile) <- c('Date', 'Time', 'GlobalActivePower', 'GlobalReactivePower', 'Voltage', 'GlobalIntensity', 'SubMetering1', 'SubMetering2', 'SubMetering3')
+colnames(DATA) <- c('Date', 'Time', 'GlobalActivePower', 'GlobalReactivePower', 'Voltage', 'GlobalIntensity', 'SubMetering1', 'SubMetering2', 'SubMetering3')
 
 datetime <- strptime(paste(subSetData$Date, subSetData$Time, sep=" "), "%d/%m/%Y %H:%M:%S") 
 
